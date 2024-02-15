@@ -5,6 +5,8 @@ import { styles } from "./styles";
 import Input from "../../../components/Input";
 import Checkbox from "../../../components/Checkbox";
 import Button from "../../../components/Button";
+import Separator from "../../../components/Separator";
+import GoogleLogin from "../../../components/GoogleLogin";
 
 
 const Signup = () => {
@@ -21,6 +23,8 @@ const Signup = () => {
                 <Text style={styles.agreeText}>I agree with <Text style={styles.agreeTextBold}>Terms</Text> & <Text style={styles.agreeTextBold}>Privacy</Text></Text>
             </View>
             <Button title="Sign In" style={styles.button}/>
+            <Separator text="or Sign Up with"/>
+            <GoogleLogin/>
         </View>
     );
 }
