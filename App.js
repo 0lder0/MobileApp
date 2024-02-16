@@ -6,6 +6,10 @@ import Signin from "./src/screens/auth/Signin";
 import Config from "react-native-config";
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import config from "./config";
+import { NavigationContainer } from "@react-navigation/native"; 
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
     const { webClientId, iosClientId } = config;
@@ -19,9 +23,11 @@ const App = () => {
         })
     }, [])
     return (
-        <SafeAreaView>
-            <Signin/>
-        </SafeAreaView>
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="Splash" component={Splash}/>
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 };
 
