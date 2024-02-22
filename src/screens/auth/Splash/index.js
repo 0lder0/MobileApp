@@ -4,7 +4,17 @@ import Button from "../../../components/Button";
 import {styles} from "./styles";
 
 
-const Splash = () => {
+const Splash = ({navigation}) => {
+    console.log('navigation => ', navigation)
+
+    const onSignUp = () => {
+        navigation.navigate("Signup");
+    }
+
+    const onSignIn = () => {
+        navigation.navigate("Signin");
+    }
+
     return( 
         <View style={styles.container}>
             <Image resizeMode="contain" style={styles.image} source={require("../../../assets/splash_image.png")} />
@@ -15,9 +25,9 @@ const Splash = () => {
                 <Text style={styles.title}> Here!</Text>
             </View>
 
-            <Button title="Sign Up" />
+            <Button onPress={onSignUp} title="Sign Up" />
 
-            <Pressable hitSlop={20}>
+            <Pressable onPress={onSignIn} hitSlop={20}>
                 <Text style={styles.footerText}>Sign In</Text>
             </Pressable>
 
@@ -26,4 +36,4 @@ const Splash = () => {
 };
 
 
-export default Splash;
+export default React.memo(Splash);
