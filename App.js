@@ -12,6 +12,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+
 import Home from "./src/screens/app/Home";
 import Favourites from "./src/screens/app/Favourites";
 import Profile from "./src/screens/app/Profile";
