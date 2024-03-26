@@ -27,4 +27,16 @@ export const styles = StyleSheet.create({
         height: 24,
         marginHorizontal: 16,
     },
+    arrow: {
+        width: 24,
+        height: 24,
+        marginHorizontal: 16,
+        transform: [{rotate: '90deg'}],
+    },
+    placeholder: {
+        flex: 1,
+        color: colors.lightGray,
+        paddingVertical: 20,
+        paddingHorizontal: 16,
+    },
 });
