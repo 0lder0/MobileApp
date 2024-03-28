@@ -12,31 +12,39 @@ const Header = ({title, onBackPress, onLogout, showBack, showSearch, showLogout,
 
     return (
         <View>
-        <View style={styles.container}>
+          <View style={styles.container}>
             {showBack ? (
-                <Pressable hitSlop={20} onPress={onBackPress}>
-                    <Image style={styles.icon} source={require("../../assets/tabs/back.png")}/>
-                </Pressable>
+              <Pressable hitSlop={20} onPress={onBackPress}>
+                <Image
+                  source={require('../../assets/tabs/back.png')}
+                  style={styles.icon}
+                />
+              </Pressable>
             ) : showSearch ? (
-                <Pressable hitSlop={20} onPress={onSearch}>
-                    <Image style={styles.icon} source={require("../../assets/tabs/search.png")}/>
-                </Pressable>
-            ) : null
-            }
+              <Pressable hitSlop={20} onPress={onSearch}>
+                <Image
+                  source={require('../../assets/tabs/search.png')}
+                  style={styles.icon}
+                />
+              </Pressable>
+            ) : (
+              <View style={styles.space} />
+            )}
             <Text style={styles.title}>{title}</Text>
             {showLogout ? (
-                <Pressable hitSlop={20} onPress={onLogout}>
-                    <Image style={styles.icon} source={require("../../assets/tabs/logout.png")}/>
-                </Pressable>
-            ) : <View style={styles.space}/>}
-            </View>
-            {
-                showSearchInput ? (
-                    <Input onChangeText={onSearchKeyword} value={keyword} placeholder="Type your keyword"/>
-                ) : null
-            }
+              <Pressable hitSlop={20} onPress={onLogout}>
+                <Image
+                  source={require('../../assets/tabs/logout.png')}
+                  style={styles.icon}
+                />
+              </Pressable>
+            ) : (
+              <View style={styles.space} />
+            )}
+          </View>
+          {showSearchInput ? <Input onChangeText={onSearchKeyword} value={keyword} placeholder="Type your keyword" /> : null}
         </View>
-    )
-}
+      );
+    };
 
 export default React.memo(Header);
