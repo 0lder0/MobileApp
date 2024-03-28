@@ -8,35 +8,34 @@ import { launchCamera, launchImageLibrary } from "react-native-image-picker";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
+import { categories } from "../../../data/categories";
 
-const CreateListing = ({navigation}) => {
-
+const CreateListing = ({navigation}) =>{
     const [images, setImages] = useState([])
     const [loading, setLoading] = useState(false)
     const [values, setValues] = useState({})
 
-    const goBack = () => {
-        navigation.goBack();
+    const goBack= () =>{
+        navigation.goBack()
     }
-
-    const uploadNewImage = async () => {
+    const uploadNewImage = async () =>{
         setLoading(true)
         const result = await launchImageLibrary()
-            if (result?.assets.length) {
+        console.log(result)
+        if(result?.assets?.length) {
             setImages(list => ([...list, ...result?.assets]))
             setLoading(false)
         }
+        console.log(images)
     }
-
-    const onDeleteImage = (image) => {
-        setImages((list) => {
-            const filteredImages = list.filter((img) => img?.fileName !== image?.fileName)
-            return filteredImages;
+    const onDeleteImage = (image) =>{
+        setImages((list)=>{
+            const filteredImages = list.filter((img)=> img?.fileName !== image?.fileName)
+            return filteredImages
         })
     }
-
-    const onChange = (value, key) => {
-        setValues((val) => ({...val, [key]: value}))
+    const onChange = (value, key) =>{
+        setValues((val) =>({...val, [key]: value}))
     }
 
 
@@ -64,7 +63,7 @@ const CreateListing = ({navigation}) => {
                 {loading ? (<ActivityIndicator/>) : null}
                 </View>
                 <Input label="Title" placeholder="Listing Title" value={values.title} onChangeText={(v) => onChange(v, "title")}/>
-                <Input label="Category" placeholder="Select the category" type="picker" />
+                <Input label="Category" placeholder="Select the category" type="picker" options={categories} />
                 <Input label="Price" placeholder="Enter price in USD" value={values.price} onChangeText={(v) => onChange(v, "price")} keyboardType="numeric"/>
                 <Input style={styles.textarea} label="Description" placeholder="Tell us more..." value={values.description} onChangeText={(v) => onChange(v, "description")} multiline/>
                 <Button title="Submit" style={{flex: 0}}/>
